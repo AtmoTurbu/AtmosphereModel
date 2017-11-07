@@ -7,7 +7,7 @@
 #include <math.h>
 
 
-#include "CLIcore.h"
+#include "CommandLineInterface/CLIcore.h"
 #include "COREMOD_tools/COREMOD_tools.h"
 
 #include "AtmosphereModel/AtmosphereModel.h"
@@ -239,6 +239,13 @@ int_fast8_t AtmosphereModel_Create_from_CONF_cli()
     return 0;
 }
 
+
+
+void __attribute__ ((constructor)) libinit_AtmosphereModel()
+{
+	init_AtmosphereModel();
+	printf(" ...... Loading module %s\n", __FILE__);
+}
 
 int_fast8_t init_AtmosphereModel()
 {
